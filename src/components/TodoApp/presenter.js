@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {Button, Container, CssBaseline, FormControlLabel, Grid, TextField} from '@mui/material';
+import {Box, Button, Container, CssBaseline, FormControlLabel, TextField} from '@mui/material';
 import {Add as AddIcon, FilterList as FilterListIcon} from '@mui/icons-material';
 
 import VisibleTodoList from '../VisibleTodoList';
@@ -50,29 +50,26 @@ export default class TodoApp extends React.Component {
                     </div>
 
                     <h2> Down and Dirty TodoApp built with React and Redux </h2>
-                    <Grid container spacing={2}>
-                        <Grid item xs={9}>
-                            <TextField fullWidth variant="standard" label="Task" placeholder="What do you want to do?"
-                                       inputRef={(c => this._todoInputField = c)}/>
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Button variant="contained" startIcon={<AddIcon/>} size="large"
-                                    onClick={() => addTodo(new Todo(this._todoInputField.value))}>
-                                Add
-                            </Button>
-                        </Grid>
-                    </Grid>
+                    <Box sx={{display: 'flex'}}>
+                        <TextField sx={{flexGlow: 1}} fullWidth variant="standard" label="Task"
+                                   placeholder="What do you want to do?"
+                                   inputRef={(c => this._todoInputField = c)}/>
+                        <Button variant="contained" startIcon={<AddIcon/>} size="large"
+                                onClick={() => addTodo(new Todo(this._todoInputField.value))}>
+                            Add
+                        </Button>
+                    </Box>
                     <VisibleTodoList
                         visibleTodos={visibleTodosArray}
                         visibilityFilter={visibilityFilter}
                         completeTodo={completeTodo}
                         removeTodo={removeTodo}/>
-                    <div>
+                    <div style={{textAlign: 'center'}}>
                         SHOW:
                         {
                             Object.keys(visibilityFilters).map(
                                 visibilityFilter =>
-                                    <Button variant="outlined" color="primary" startIcon={<FilterListIcon/>}
+                                    <Button variant="text" color="primary" startIcon={<FilterListIcon/>}
                                             key={visibilityFilter}
                                             onClick={() => changeVisibilityFilter(visibilityFilter)}>
                                         {visibilityFilter.replace("_", " ")}
