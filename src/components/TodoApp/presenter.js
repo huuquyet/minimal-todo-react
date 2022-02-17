@@ -2,7 +2,6 @@ import React from 'react';
 
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {
-    Box,
     Button,
     Container,
     CssBaseline,
@@ -12,40 +11,33 @@ import {
     InputAdornment,
     InputLabel
 } from '@mui/material';
-import {AddCircle as AddCircleIcon} from '@mui/icons-material';
+import {AddCircle as AddCircleIcon, FilterList as FilterListIcon} from '@mui/icons-material';
 
 import VisibleTodoList from '../VisibleTodoList';
-import {themeModes, visibilityFilters} from '../../constants/constants';
+import {filterTitles, themeModes} from '../../constants/constants';
 import Todo from '../../lib/Todo';
 import MaterialUISwitch from "../../customize/MaterialUISwitch";
-
-function visibleTodos(todos, visibilityFilter) {
-    switch (visibilityFilter) {
-        case visibilityFilters.ALL_TODOS:
-            return todos;
-        case visibilityFilters.ACTIVE_TODOS:
-            return todos.filter(todo => todo.isDone === false);
-        case visibilityFilters.COMPLETED_TODOS:
-            return todos.filter(todo => todo.isDone === true);
-        default:
-            return todos;
-    }
-}
 
 export default class TodoApp extends React.Component {
     render() {
         const {
             todos,
-            visibilityFilter,
             themeMode,
+            hideCompleted,
             addTodo,
             removeTodo,
             completeTodo,
-            changeVisibilityFilter,
             toggleMode,
+            toggleComplete,
         } = this.props;
 
-        let visibleTodosArray = visibleTodos(todos, visibilityFilter);
+        const pendingTodos = todos.filter(todo => !todo.isDone);
+
+        const todoList = function (todos, hideCompleted) {
+            return hideCompleted ? pendingTodos : todos;
+        }
+
+        const pendingTodosTitle = `${pendingTodos.length > 0 ? ` (${pendingTodos.length})` : ''}`;
 
         const theme = createTheme({palette: {mode: themeMode}});
 
@@ -59,8 +51,8 @@ export default class TodoApp extends React.Component {
                                           aria-label="Switch mode" label=""/>
                     </div>
 
-                    <h2> Down and Dirty TodoApp built with React and Redux </h2>
-                    <FormControl fullWidth variant="standard">
+                    <h1> 📝️ To Do List {pendingTodosTitle} </h1>
+                    <FormControl fullWidth variant="standard" margin="normal">
                         <InputLabel htmlFor="todo-input">Task</InputLabel>
                         <Input id="todo-input" type='text' placeholder="What do you want to do?"
                                inputRef={(c => this._todoInputField = c)} endAdornment={
@@ -72,21 +64,17 @@ export default class TodoApp extends React.Component {
                             </InputAdornment>
                         }/>
                     </FormControl>
-                    <VisibleTodoList visibleTodos={visibleTodosArray}
-                                     visibilityFilter={visibilityFilter}
+
+                    <div style={{textAlign: 'center'}}>
+                        <Button variant="outlined" startIcon={<FilterListIcon/>}
+                                onClick={() => toggleComplete(hideCompleted)}>
+                            {hideCompleted ? filterTitles.SHOW_ALL : filterTitles.HIDE_COMPLETED}
+                        </Button>
+                    </div>
+
+                    <VisibleTodoList todoList={todoList(todos, hideCompleted)}
                                      completeTodo={completeTodo}
                                      removeTodo={removeTodo}/>
-                    <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                        SHOW:
-                        {
-                            Object.keys(visibilityFilters).map(visibilityFilter =>
-                                <Button variant="text" color="primary" key={visibilityFilter}
-                                        onClick={() => changeVisibilityFilter(visibilityFilter)}>
-                                    {visibilityFilter.replace("_", " ")}
-                                </Button>
-                            )
-                        }
-                    </Box>
                 </div>
             </Container>
         </ThemeProvider>

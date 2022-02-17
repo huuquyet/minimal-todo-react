@@ -21,16 +21,16 @@ export function completeTodo(todoId) {
     }
 }
 
-export function changeVisibilityFilter(visibilityFilter) {
-    return {
-        type: actionTypes.CHANGE_VISIBILITY_FILTER,
-        visibilityFilter,
-    }
-}
-
 export function toggleMode(themeMode) {
     return {
         type: actionTypes.TOGGLE_MODE,
-        themeMode
+        themeMode,
+    }
+}
+
+export function toggleComplete(hideCompleted) {
+    return {
+        type: actionTypes.TOGGLE_COMPLETE,
+        hideCompleted,
     }
 }

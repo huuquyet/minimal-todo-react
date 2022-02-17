@@ -3,12 +3,12 @@ import throttle from 'lodash/throttle';
 
 import {loadFromLocalStorage, saveToLocalStorage} from './localStorage';
 import rootReducer from '../reducers/index';
-import {themeModes, visibilityFilters} from "../constants/constants";
+import {themeModes} from "../constants/constants";
 
 const initialState = loadFromLocalStorage() || {
     todos: [],
-    visibilityFilter: visibilityFilters.ALL_TODOS,
     themeMode: themeModes.DARK,
+    hideCompleted: false,
 };
 
 const store = createStore(rootReducer, initialState);
