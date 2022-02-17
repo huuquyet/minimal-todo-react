@@ -6,11 +6,11 @@ import * as actions from '../../actions';
 import TodoApp from './presenter';
 
 function mapStateToProps(state) {
-    const {todos, visibilityFilter, themeMode} = state;
+    const {todos, themeMode, hideCompleted} = state;
     return {
         todos,
-        visibilityFilter,
         themeMode,
+        hideCompleted,
     }
 }
 
@@ -19,8 +19,8 @@ function mapDispatchToProps(dispatch) {
         addTodo: bindActionCreators(actions.addTodo, dispatch),
         removeTodo: bindActionCreators(actions.removeTodo, dispatch),
         completeTodo: bindActionCreators(actions.completeTodo, dispatch),
-        changeVisibilityFilter: bindActionCreators(actions.changeVisibilityFilter, dispatch),
         toggleMode: bindActionCreators(actions.toggleMode, dispatch),
+        toggleComplete: bindActionCreators(actions.toggleComplete, dispatch),
     }
 }
 

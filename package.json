@@ -1,6 +1,6 @@
 {
   "name": "minimal-todo-react",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A minimal Todo application built with React, Redux and MaterialUI",
   "main": "index.js",
   "scripts": {
@@ -24,9 +24,6 @@
     "@babel/preset-flow": "^7.16.7",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.3",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
     "webpack": "^5.69.0",
