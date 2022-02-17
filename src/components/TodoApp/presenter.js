@@ -1,8 +1,18 @@
 import React from 'react';
 
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {Box, Button, Container, CssBaseline, FormControlLabel, TextField} from '@mui/material';
-import {Add as AddIcon, FilterList as FilterListIcon} from '@mui/icons-material';
+import {
+    Box,
+    Button,
+    Container,
+    CssBaseline,
+    FormControl,
+    FormControlLabel,
+    Input,
+    InputAdornment,
+    InputLabel
+} from '@mui/material';
+import {AddCircle as AddCircleIcon} from '@mui/icons-material';
 
 import VisibleTodoList from '../VisibleTodoList';
 import {themeModes, visibilityFilters} from '../../constants/constants';
@@ -50,33 +60,35 @@ export default class TodoApp extends React.Component {
                     </div>
 
                     <h2> Down and Dirty TodoApp built with React and Redux </h2>
-                    <Box sx={{display: 'flex'}}>
-                        <TextField sx={{flexGlow: 1}} fullWidth variant="standard" label="Task"
-                                   placeholder="What do you want to do?"
-                                   inputRef={(c => this._todoInputField = c)}/>
-                        <Button variant="contained" startIcon={<AddIcon/>} size="large"
-                                onClick={() => addTodo(new Todo(this._todoInputField.value))}>
-                            Add
-                        </Button>
-                    </Box>
+                    <FormControl fullWidth variant="standard">
+                        <InputLabel htmlFor="todo-input">Task</InputLabel>
+                        <Input id="todo-input" type='text' placeholder="What do you want to do?"
+                               inputRef={(c => this._todoInputField = c)} endAdornment={
+                            <InputAdornment position="end">
+                                <Button variant="text" startIcon={<AddCircleIcon/>}
+                                        onClick={() => addTodo(new Todo(this._todoInputField.value))}>
+                                    Add
+                                </Button>
+                            </InputAdornment>
+                        }/>
+                    </FormControl>
                     <VisibleTodoList
                         visibleTodos={visibleTodosArray}
                         visibilityFilter={visibilityFilter}
                         completeTodo={completeTodo}
                         removeTodo={removeTodo}/>
-                    <div style={{textAlign: 'center'}}>
+                    <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         SHOW:
                         {
                             Object.keys(visibilityFilters).map(
                                 visibilityFilter =>
-                                    <Button variant="text" color="primary" startIcon={<FilterListIcon/>}
-                                            key={visibilityFilter}
+                                    <Button variant="text" color="primary" key={visibilityFilter}
                                             onClick={() => changeVisibilityFilter(visibilityFilter)}>
                                         {visibilityFilter.replace("_", " ")}
                                     </Button>
                             )
                         }
-                    </div>
+                    </Box>
                 </div>
             </Container>
         </ThemeProvider>
