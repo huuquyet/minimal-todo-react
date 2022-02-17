@@ -1,7 +1,7 @@
 import {createStore} from 'redux';
 import throttle from 'lodash/throttle';
 
-import { saveToLocalStorage, loadFromLocalStorage } from './localStorage';
+import {loadFromLocalStorage, saveToLocalStorage} from './localStorage';
 import rootReducer from '../reducers/index';
 import {themeModes, visibilityFilters} from "../constants/constants";
 

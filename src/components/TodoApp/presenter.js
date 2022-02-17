@@ -1,12 +1,13 @@
 import React from 'react';
 
 import {createTheme, ThemeProvider} from '@mui/material/styles';
-import {Button, Container, CssBaseline, Grid, IconButton, TextField} from '@mui/material';
-import {Add as AddIcon, FilterList as FilterListIcon, Brightness7 as Brightness7Icon, DarkMode as DarkModeIcon} from '@mui/icons-material';
+import {Button, Container, CssBaseline, FormControlLabel, Grid, TextField} from '@mui/material';
+import {Add as AddIcon, FilterList as FilterListIcon} from '@mui/icons-material';
 
 import VisibleTodoList from '../VisibleTodoList';
-import {visibilityFilters, themeModes} from '../../constants/constants';
+import {themeModes, visibilityFilters} from '../../constants/constants';
 import Todo from '../../lib/Todo';
+import MaterialUISwitch from "../../customize/MaterialUISwitch";
 
 function visibleTodos(todos, visibilityFilter) {
     switch (visibilityFilter) {
@@ -43,10 +44,9 @@ export default class TodoApp extends React.Component {
             <Container maxWidth="sm">
                 <div>
                     <div style={{textAlign: 'right'}}>
-                        <IconButton onClick={() => toggleMode(themeMode)} color="inherit"
-                        aria-label={themeMode === themeModes.DARK ? themeModes.LIGHT : themeModes.DARK}>
-                            {themeMode === themeModes.DARK ? <Brightness7Icon/> : <DarkModeIcon/>}
-                        </IconButton>
+                        <FormControlLabel onClick={() => toggleMode(themeMode)}
+                                          control={<MaterialUISwitch checked={themeMode === themeModes.DARK}/>}
+                                          aria-label="Switch mode" label=""/>
                     </div>
 
                     <h2> Down and Dirty TodoApp built with React and Redux </h2>
