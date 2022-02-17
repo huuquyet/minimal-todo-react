@@ -3,7 +3,7 @@ const actionTypes = {
     REMOVE_TODO: 'REMOVE_TODO',
     COMPLETE_TODO: 'COMPLETE_TODO',
     TOGGLE_MODE: 'TOGGLE_MODE',
-    TOGGLE_COMPLETE: 'TOGGLE_COMPLETE',
+    TOGGLE_COMPLETED: 'TOGGLE_COMPLETED',
 }
 
 Object.freeze(actionTypes);

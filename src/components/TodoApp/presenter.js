@@ -28,7 +28,7 @@ export default class TodoApp extends React.Component {
             removeTodo,
             completeTodo,
             toggleMode,
-            toggleComplete,
+            toggleCompleted,
         } = this.props;
 
         const pendingTodos = todos.filter(todo => !todo.isDone);
@@ -67,7 +67,7 @@ export default class TodoApp extends React.Component {
 
                     <div style={{textAlign: 'center'}}>
                         <Button variant="outlined" startIcon={<FilterListIcon/>}
-                                onClick={() => toggleComplete(hideCompleted)}>
+                                onClick={() => toggleCompleted(hideCompleted)}>
                             {hideCompleted ? filterTitles.SHOW_ALL : filterTitles.HIDE_COMPLETED}
                         </Button>
                     </div>

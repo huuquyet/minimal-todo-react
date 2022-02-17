@@ -20,7 +20,7 @@ function mapDispatchToProps(dispatch) {
         removeTodo: bindActionCreators(actions.removeTodo, dispatch),
         completeTodo: bindActionCreators(actions.completeTodo, dispatch),
         toggleMode: bindActionCreators(actions.toggleMode, dispatch),
-        toggleComplete: bindActionCreators(actions.toggleComplete, dispatch),
+        toggleCompleted: bindActionCreators(actions.toggleCompleted, dispatch),
     }
 }
 

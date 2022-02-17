@@ -28,9 +28,9 @@ export function toggleMode(themeMode) {
     }
 }
 
-export function toggleComplete(hideCompleted) {
+export function toggleCompleted(hideCompleted) {
     return {
-        type: actionTypes.TOGGLE_COMPLETE,
+        type: actionTypes.TOGGLE_COMPLETED,
         hideCompleted,
     }
 }

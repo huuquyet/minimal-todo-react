@@ -2,9 +2,9 @@ import {actionTypes} from "../constants/constants";
 
 const initialState = false;
 
-export default function themeMode(state = initialState, action) {
+export default function hideCompleted(state = initialState, action) {
     switch (action.type) {
-        case actionTypes.TOGGLE_COMPLETE:
+        case actionTypes.TOGGLE_COMPLETED:
             return !action.hideCompleted;
         default:
             return state;
