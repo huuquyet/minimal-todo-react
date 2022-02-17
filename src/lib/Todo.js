@@ -16,21 +16,19 @@ export default class Todo {
         this.id = id || guidGenerator();
     }
 
-
     // simple serialize, and deserialize methods for localStorage
     serialize() {
         return {
             id: this.id,
             descriptionText: this.descriptionText,
-            isDone: this.isDone
+            isDone: this.isDone,
         }
     }
-
-    static deserialize(json) {
-        const todo = new Todo()
-        todo.id = json['id'] || guidGenerator()
-        todo.descriptionText = json['descriptionText'] || ''
-        todo.isDone = json['isDone'] || false
-        return todo
+    static deserialize(json: Object) {
+        const todo = new Todo();
+        todo.id = json['id'] || guidGenerator();
+        todo.descriptionText = json['descriptionText'] || '';
+        todo.isDone = json['isDone'] || false;
+        return todo;
     }
 }

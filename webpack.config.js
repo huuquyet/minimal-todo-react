@@ -3,10 +3,10 @@ module.exports = {
         './src/index.js'
     ],
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel'
+            loader: 'babel-loader'
         }]
     },
     resolve: {
@@ -19,6 +19,6 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        contentBase: './dist',
+        static: './dist',
     }
 };

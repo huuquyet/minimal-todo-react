@@ -1,14 +1,16 @@
 import React from 'react';
+import {List, ListItem} from "@mui/material";
+
 import SingleTodo from './SingleTodo'
 
 export default class VisibleTodoList extends React.Component {
     render() {
         return (
             <div>
-            <h3>{this.props.visibilityFilter.replace("_", " ")}</h3>
-            {this.props.visibleTodos.length > 0?
+            <h3 style={{textAlign: 'center'}}>{this.props.visibilityFilter.replace("_", " ")}</h3>
+            {this.props.visibleTodos.length > 0 ?
                 (
-                    <ul>
+                    <List>
                         {this.props.visibleTodos.map(
                             (todo) =>
                                 <SingleTodo
@@ -20,12 +22,12 @@ export default class VisibleTodoList extends React.Component {
                                     removeTodo={this.props.removeTodo}
                                 />
                         )}
-                    </ul>
+                    </List>
                 ):
                 (
-                    <ul>
-                        <li>Nothing here 🙈🐘</li>
-                    </ul>
+                    <List>
+                        <ListItem>Nothing here 🙈🐘</ListItem>
+                    </List>
                 )
             }
             </div>
