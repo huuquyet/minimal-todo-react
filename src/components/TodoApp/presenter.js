@@ -47,7 +47,7 @@ export default class TodoApp extends React.Component {
 
         let visibleTodosArray = visibleTodos(todos, visibilityFilter);
 
-        const theme = createTheme({palette: {mode: themeMode},});
+        const theme = createTheme({palette: {mode: themeMode}});
 
         return <ThemeProvider theme={theme}>
             <CssBaseline/>
@@ -67,25 +67,23 @@ export default class TodoApp extends React.Component {
                             <InputAdornment position="end">
                                 <Button variant="text" startIcon={<AddCircleIcon/>}
                                         onClick={() => addTodo(new Todo(this._todoInputField.value))}>
-                                    Add
+                                    ADD
                                 </Button>
                             </InputAdornment>
                         }/>
                     </FormControl>
-                    <VisibleTodoList
-                        visibleTodos={visibleTodosArray}
-                        visibilityFilter={visibilityFilter}
-                        completeTodo={completeTodo}
-                        removeTodo={removeTodo}/>
+                    <VisibleTodoList visibleTodos={visibleTodosArray}
+                                     visibilityFilter={visibilityFilter}
+                                     completeTodo={completeTodo}
+                                     removeTodo={removeTodo}/>
                     <Box sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         SHOW:
                         {
-                            Object.keys(visibilityFilters).map(
-                                visibilityFilter =>
-                                    <Button variant="text" color="primary" key={visibilityFilter}
-                                            onClick={() => changeVisibilityFilter(visibilityFilter)}>
-                                        {visibilityFilter.replace("_", " ")}
-                                    </Button>
+                            Object.keys(visibilityFilters).map(visibilityFilter =>
+                                <Button variant="text" color="primary" key={visibilityFilter}
+                                        onClick={() => changeVisibilityFilter(visibilityFilter)}>
+                                    {visibilityFilter.replace("_", " ")}
+                                </Button>
                             )
                         }
                     </Box>

@@ -11,20 +11,16 @@ export default class VisibleTodoList extends React.Component {
                 {this.props.visibleTodos.length > 0 ?
                     (
                         <List>
-                            {this.props.visibleTodos.map(
-                                (todo) =>
-                                    <SingleTodo
-                                        key={todo.id}
-                                        todoId={todo.id}
-                                        text={todo.descriptionText}
-                                        isDone={todo.isDone}
-                                        completeTodo={this.props.completeTodo}
-                                        removeTodo={this.props.removeTodo}
-                                    />
+                            {this.props.visibleTodos.map(todo =>
+                                <SingleTodo key={todo.id}
+                                            todoId={todo.id}
+                                            text={todo.descriptionText}
+                                            isDone={todo.isDone}
+                                            completeTodo={this.props.completeTodo}
+                                            removeTodo={this.props.removeTodo}/>
                             )}
                         </List>
-                    ) :
-                    (
+                    ) : (
                         <List>
                             <ListItem>Nothing here 🙈🐘</ListItem>
                         </List>
