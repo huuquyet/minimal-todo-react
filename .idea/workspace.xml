@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6ba02897-dc98-49cd-bcd8-675f534ed704" name="Changes" comment="Revert" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="redux" />
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Quyet &lt;huuquyetng@gmail.com&gt;" />
+      </list>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="redux" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="ProjectId" id="255r1xKxhfBm57KO58ITPA5lXHT" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2021.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Workspace\IntelliJ\minimal-todo-react\src\components" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6ba02897-dc98-49cd-bcd8-675f534ed704" name="Changes" comment="" />
+      <created>1644827585969</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1644827585969</updated>
+      <workItem from="1644827589145" duration="36861000" />
+      <workItem from="1644976127956" duration="57570000" />
+      <workItem from="1645155084117" duration="9533000" />
+      <workItem from="1645176539715" duration="1034000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add features: add material UI, toggle dark mode, save to localStorage">
+      <created>1645070523559</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645070523559</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Cleanup code, change switch mode to customized MaterialUISwitch">
+      <created>1645073589709</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645073589709</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Bump version, update UI">
+      <created>1645092373499</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645092373499</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Bump version, change UI by using TextField, ListItemButton">
+      <created>1645100963574</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645100963574</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Cleanup">
+      <created>1645102533956</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645102533956</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Change logic of filtering todo list by toggle show/hide completed todos">
+      <created>1645122580533</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645122580533</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Change logic of filtering todo list by toggle show/hide completed todos">
+      <created>1645122614467</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645122614467</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Fix typos">
+      <created>1645123567302</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645123567302</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Update gh-pages">
+      <created>1645161592874</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1645161592874</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Revert &quot;Updates&quot;&#10;&#10;This reverts commit 97cda4ad">
+      <created>1645176805352</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1645176805352</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Revert">
+      <created>1645176993045</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1645176993045</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="dfe979f6-7d64-49d5-8516-ec50ce6b5f1a">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="dfe979f6-7d64-49d5-8516-ec50ce6b5f1a" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add features: add material UI, toggle dark mode, save to localStorage" />
+    <MESSAGE value="Cleanup code, change switch mode to customized MaterialUISwitch" />
+    <MESSAGE value="Bump version, update UI" />
+    <MESSAGE value="Bump version, change UI by using TextField, ListItemButton" />
+    <MESSAGE value="Cleanup" />
+    <MESSAGE value="Change logic of filtering todo list by toggle show/hide completed todos" />
+    <MESSAGE value="Fix typos" />
+    <MESSAGE value="Revert &quot;Fix typos&quot;&#10;&#10;This reverts commit c7a4e1da" />
+    <MESSAGE value="Update gh-pages" />
+    <MESSAGE value="Revert &quot;Updates&quot;&#10;&#10;This reverts commit 97cda4ad" />
+    <MESSAGE value="Revert" />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert" />
+  </component>
+</project>

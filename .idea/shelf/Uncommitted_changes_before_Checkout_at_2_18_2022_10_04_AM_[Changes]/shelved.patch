@@ -1,0 +1,19 @@
+Index: package.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"name\": \"minimal-todo-react\",\r\n  \"version\": \"2.2.0\",\r\n  \"description\": \"A minimal Todo application built with React, Redux and MaterialUI\",\r\n  \"main\": \"index.js\",\r\n  \"scripts\": {\r\n    \"start\": \"webpack-dev-server --progress --mode=development --config ./webpack.config.js\",\r\n    \"build\": \"webpack --config ./webpack.config.js\",\r\n    \"test\": \"echo \\\"Error: no test specified\\\" && exit 1\"\r\n  },\r\n  \"keywords\": [],\r\n  \"author\": \"\",\r\n  \"license\": \"ISC\",\r\n  \"babel\": {\r\n    \"presets\": [\r\n      \"@babel/preset-env\",\r\n      \"@babel/preset-react\",\r\n      \"@babel/preset-flow\"\r\n    ]\r\n  },\r\n  \"devDependencies\": {\r\n    \"@babel/preset-env\": \"^7.16.11\",\r\n    \"@babel/preset-react\": \"^7.16.7\",\r\n    \"@babel/preset-flow\": \"^7.16.7\",\r\n    \"babel-core\": \"^6.26.3\",\r\n    \"babel-loader\": \"^8.2.3\",\r\n    \"@emotion/react\": \"^11.7.1\",\r\n    \"@emotion/styled\": \"^11.6.0\",\r\n    \"webpack\": \"^5.69.0\",\r\n    \"webpack-cli\": \"^4.9.2\",\r\n    \"webpack-dev-server\": \"^4.7.4\"\r\n  },\r\n  \"dependencies\": {\r\n    \"lodash\": \"^4.17.21\",\r\n    \"@mui/material\": \"^5.4.2\",\r\n    \"@mui/icons-material\": \"^5.4.2\",\r\n    \"react\": \"^17.0.2\",\r\n    \"react-dom\": \"^17.0.2\",\r\n    \"react-redux\": \"^7.2.6\",\r\n    \"redux\": \"^4.1.2\"\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package.json b/package.json
+--- a/package.json	(revision c7a4e1dabbc6b756801b9ffa3a3f2bbf38c21ea1)
++++ b/package.json	(date 1645151798957)
+@@ -11,6 +11,8 @@
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
++  "private": true,
++  "homepage": ".",
+   "babel": {
+     "presets": [
+       "@babel/preset-env",
