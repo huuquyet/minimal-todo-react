@@ -1,20 +1,15 @@
-import {createStore} from 'redux';
-import throttle from 'lodash/throttle';
+import React from "react";
+import { configureStore } from "@reduxjs/toolkit";
 
-import {loadFromLocalStorage, saveToLocalStorage} from './localStorage';
-import rootReducer from '../reducers/index';
-import {themeModes} from "../constants/constants";
+import todosReducer from "../features/todosSlice";
+import filtersReducer from "../features/filtersSlice";
 
-const initialState = loadFromLocalStorage() || {
-    todos: [],
-    themeMode: themeModes.DARK,
-    hideCompleted: false,
-};
-
-const store = createStore(rootReducer, initialState);
-
-store.subscribe(throttle(() => {
-    saveToLocalStorage(store.getState());
-}, 1000));
+const store = configureStore({
+  reducer: {
+    // Define a top-level state field named `todos`, handled by `todosReducer`
+    todos: todosReducer,
+    filters: filtersReducer,
+  },
+});
 
 export default store;

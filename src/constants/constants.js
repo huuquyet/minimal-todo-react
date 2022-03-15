@@ -1,29 +1,20 @@
-const actionTypes = {
-    ADD_TODO: 'ADD_TODO',
-    REMOVE_TODO: 'REMOVE_TODO',
-    COMPLETE_TODO: 'COMPLETE_TODO',
-    TOGGLE_MODE: 'TOGGLE_MODE',
-    TOGGLE_COMPLETED: 'TOGGLE_COMPLETED',
-}
+import React from "react";
 
-Object.freeze(actionTypes);
-
-export {actionTypes};
-
-const themeModes = {
-    DARK: "dark",
-    LIGHT: "light",
+const modes = {
+  DARK: "dark",
+  LIGHT: "light",
 };
+Object.freeze(modes);
+export { modes };
 
-Object.freeze(themeModes);
+const statusFilters = {
+  ALL: "ALL",
+  ACTIVE: "ACTIVE",
+  COMPLETED: "COMPLETED",
+};
+Object.freeze(statusFilters);
+export { statusFilters };
 
-export {themeModes};
+export const availableColors = ["green", "blue", "orange", "purple", "red"];
 
-const filterTitles = {
-    HIDE_COMPLETED: "HIDE COMPLETED",
-    SHOW_ALL: "SHOW ALL",
-}
-
-Object.freeze(filterTitles);
-
-export {filterTitles};
+export const capitalize = (s) => s[0].toUpperCase() + s.slice(1);

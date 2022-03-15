@@ -1,7 +1,19 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
-import store from './store/initializeStore';
-import TodoApp from './components/TodoApp/';
+import TodoApp from "./components/TodoApp";
+import "./api/server";
+import store from "./store/initializeStore";
+import { fetchTodos } from "./features/todosSlice";
 
-ReactDOM.render(<TodoApp store={store}/>, document.getElementById('app'));
+store.dispatch(fetchTodos());
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <TodoApp />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("app")
+);

@@ -1,31 +1,33 @@
-import React from 'react';
-import {List, ListItem} from "@mui/material";
+import React from "react";
+import { useSelector } from "react-redux";
+import { List, ListItem, Skeleton } from "@mui/material";
 
-import SingleTodo from './SingleTodo';
+import SingleTodo from "./SingleTodo";
+import { selectFilteredTodoIds } from "../features/todosSlice";
 
-export default class VisibleTodoList extends React.Component {
-    render() {
-        return (
-            <div>
-                {this.props.todoList.length > 0 ?
-                    (
-                        <List>
-                            {this.props.todoList.map(todo =>
-                                <SingleTodo key={todo.id}
-                                            todoId={todo.id}
-                                            text={todo.descriptionText}
-                                            isDone={todo.isDone}
-                                            completeTodo={this.props.completeTodo}
-                                            removeTodo={this.props.removeTodo}/>
-                            )}
-                        </List>
-                    ) : (
-                        <List>
-                            <ListItem>Nothing here 🙈🐘</ListItem>
-                        </List>
-                    )
-                }
-            </div>
-        );
-    }
-}
+const VisibleTodoList = () => {
+  const todoIds = useSelector(selectFilteredTodoIds);
+  const loadingStatus = useSelector((state) => state.todos.status);
+
+  if (loadingStatus === "loading") {
+    return <Skeleton variant="rectangular" width={210} height={118} />;
+  }
+
+  return (
+    <div>
+      {todoIds.length > 0 ? (
+        <List>
+          {todoIds.map((todoId) => (
+            <SingleTodo key={todoId} id={todoId} />
+          ))}
+        </List>
+      ) : (
+        <List>
+          <ListItem>Nothing here 🙈🐘</ListItem>
+        </List>
+      )}
+    </div>
+  );
+};
+
+export default VisibleTodoList;
