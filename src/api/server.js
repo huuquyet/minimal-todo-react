@@ -56,14 +56,14 @@ const generateTodoText = () => {
 new Server({
   routes() {
     this.namespace = "fakeApi";
-    this.timing = 2000;
+    this.timing = 1000;
 
     this.resource("todos");
     this.resource("lists");
 
     const server = this;
 
-    this.post("/todos", function (schema, req) {
+    this.post("/todos", function () {
       const data = this.normalizedRequestAttrs();
 
       if (data.text === "error") {

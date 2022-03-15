@@ -21,22 +21,7 @@ import {
   colorFilterChanged,
   statusFilterChanged,
 } from "../features/filtersSlice";
-import {
-  completedTodosCleared,
-  allTodosCompleted,
-  selectTodos,
-} from "../features/todosSlice";
-
-const RemainingTodos = ({ count }) => {
-  const suffix = count === 1 ? "" : "s";
-
-  return (
-    <div className="todo-count">
-      <h5>Remaining Todos</h5>
-      <strong>{count}</strong> item{suffix} left
-    </div>
-  );
-};
+import { completedTodosCleared } from "../features/todosSlice";
 
 const StatusFilter = ({ value: status, onChange }) => {
   const renderedFilters = Object.keys(statusFilters).map((key) => {
@@ -129,12 +114,10 @@ const FilterTodo = () => {
             color="error"
           >
             <RemoveDoneIcon />
-            {/*Clear Completed*/}
           </IconButton>
         </Tooltip>
       </div>
 
-      {/*<RemainingTodos count={todosRemaining} />*/}
       <StatusFilter value={status} onChange={onStatusChange} />
       <ColorFilters value={colors} onChange={onColorChange} />
     </footer>

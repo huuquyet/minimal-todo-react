@@ -8,9 +8,9 @@ Object.freeze(modes);
 export { modes };
 
 const statusFilters = {
-  ALL: "ALL",
-  ACTIVE: "ACTIVE",
-  COMPLETED: "COMPLETED",
+  ALL: "all",
+  ACTIVE: "active",
+  COMPLETED: "completed",
 };
 Object.freeze(statusFilters);
 export { statusFilters };
