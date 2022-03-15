@@ -74,7 +74,7 @@ const ColorFilters = ({ value: colors, onChange }) => {
             name={color}
             checked={checked}
             onChange={handleChange}
-            sx={{ color }}
+            sx={{ color, "&.Mui-checked": { color } }}
           />
         }
       />

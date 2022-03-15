@@ -10,7 +10,14 @@ const VisibleTodoList = () => {
   const loadingStatus = useSelector((state) => state.todos.status);
 
   if (loadingStatus === "loading") {
-    return <Skeleton variant="rectangular" width={210} height={118} />;
+    return (
+      <Skeleton
+        variant="rectangular"
+        animation="wave"
+        width="100%"
+        height={99}
+      />
+    );
   }
 
   return (
