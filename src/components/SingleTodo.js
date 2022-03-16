@@ -4,7 +4,6 @@ import {
   Checkbox,
   FormControl,
   IconButton,
-  InputLabel,
   ListItem,
   ListItemButton,
   ListItemText,
@@ -43,65 +42,60 @@ const SingleTodo = ({ id }) => {
   };
 
   return (
-    <ListItem
-      disablePadding
-      sx={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-      }}
-    >
-      <ListItemButton
-        role={undefined}
-        onClick={handleCompletedChanged}
-        selected={completed}
-        dense
-      >
+    <ListItem disablePadding sx={itemContainer}>
+      <ListItemButton selected={completed} dense>
         <Checkbox
           edge="start"
           checked={completed}
           inputProps={{ "aria-labelledby": todo.id }}
+          onClick={handleCompletedChanged}
         />
         <ListItemText
           primary={text}
+          onClick={handleCompletedChanged}
           sx={{
             textDecoration: completed ? "line-through" : "none",
           }}
         />
-      </ListItemButton>
-      <FormControl variant="standard" size="small" sx={{ width: 100 }}>
-        <InputLabel id="select-color-label">Color</InputLabel>
-        <Select
-          id="select-color"
-          labelId="select-color-label"
-          label="Color"
-          value={color}
-          sx={{ color }}
-          onChange={handleColorChanged}
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          {availableColors.map((c) => (
-            <MenuItem key={c} value={c}>
-              {capitalize(c)}
+        <FormControl variant="standard" size="small" sx={{ minWidth: 60 }}>
+          <Select
+            displayEmpty
+            autoWidth
+            label="Color"
+            value={color}
+            sx={{ color }}
+            onChange={handleColorChanged}
+          >
+            <MenuItem value="">
+              <em>Color</em>
             </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <Tooltip title="Clear">
-        <IconButton
-          edge="end"
-          aria-label="Delete"
-          color="error"
-          onClick={onDelete}
-        >
-          <DeleteIcon />
-        </IconButton>
-      </Tooltip>
+            {availableColors.map((c) => (
+              <MenuItem key={c} value={c} sx={{ backgroundColor: c }}>
+                {capitalize(c)}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+        <Tooltip title="Clear">
+          <IconButton
+            edge="end"
+            aria-label="Delete"
+            color="error"
+            onClick={onDelete}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      </ListItemButton>
     </ListItem>
   );
 };
 
 export default SingleTodo;
+
+const itemContainer = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+};

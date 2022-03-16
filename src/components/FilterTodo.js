@@ -1,13 +1,16 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
+  Box,
+  Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
-  IconButton,
+  Paper,
   Tooltip,
 } from "@mui/material";
 import {
+  DoneAll as DoneAllIcon,
   FilterList as FilterListIcon,
   RemoveDone as RemoveDoneIcon,
 } from "@mui/icons-material";
@@ -21,7 +24,10 @@ import {
   colorFilterChanged,
   statusFilterChanged,
 } from "../features/filtersSlice";
-import { completedTodosCleared } from "../features/todosSlice";
+import {
+  allTodosCompleted,
+  completedTodosCleared,
+} from "../features/todosSlice";
 
 const StatusFilter = ({ value: status, onChange }) => {
   const renderedFilters = Object.keys(statusFilters).map((key) => {
@@ -30,30 +36,20 @@ const StatusFilter = ({ value: status, onChange }) => {
     const selected = value === status ? "secondary" : "primary";
 
     return (
-      <IconButton
+      <Button
         key={value}
-        variant="outline"
+        variant="outlined"
         onClick={handleClick}
-        size="small"
         color={selected}
+        startIcon={<FilterListIcon />}
+        sx={{ mx: 1 }}
       >
-        <FilterListIcon />
         {key}
-      </IconButton>
+      </Button>
     );
   });
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-      }}
-    >
-      {renderedFilters}
-    </div>
-  );
+  return <Box sx={formContainer}>{renderedFilters}</Box>;
 };
 
 const ColorFilters = ({ value: colors, onChange }) => {
@@ -81,21 +77,15 @@ const ColorFilters = ({ value: colors, onChange }) => {
     );
   });
 
-  return (
-    <div>
-      <FormGroup
-        sx={{ display: "flex", flexDirection: "row", justifyContent: "center" }}
-      >
-        {renderedColors}
-      </FormGroup>
-    </div>
-  );
+  return <FormGroup sx={formContainer}>{renderedColors}</FormGroup>;
 };
 
 const FilterTodo = () => {
   const dispatch = useDispatch();
 
   const { status, colors } = useSelector((state) => state.filters);
+
+  const onMarkCompletedClicked = () => dispatch(allTodosCompleted());
 
   const onClearCompletedClicked = () => dispatch(completedTodosCleared());
 
@@ -105,23 +95,53 @@ const FilterTodo = () => {
   const onStatusChange = (status) => dispatch(statusFilterChanged(status));
 
   return (
-    <footer className="footer">
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Tooltip title="Clear Completed">
-          <IconButton
-            variant="text"
-            onClick={onClearCompletedClicked}
-            color="error"
-          >
-            <RemoveDoneIcon />
-          </IconButton>
-        </Tooltip>
-      </div>
+    <Paper elevation={3} sx={paperContainer}>
+      <Box sx={boxContainer}>
+        <Box display="flex" justifyContent="space-between" m={1}>
+          <Tooltip title="Mark All Completed">
+            <Button
+              variant="text"
+              color="success"
+              onClick={onMarkCompletedClicked}
+              startIcon={<DoneAllIcon />}
+            >
+              Mark All Completed
+            </Button>
+          </Tooltip>
+          <Tooltip title="Clear Completed">
+            <Button
+              variant="text"
+              color="error"
+              onClick={onClearCompletedClicked}
+              startIcon={<RemoveDoneIcon />}
+            >
+              CLEAR COMPLETED
+            </Button>
+          </Tooltip>
+        </Box>
 
-      <StatusFilter value={status} onChange={onStatusChange} />
-      <ColorFilters value={colors} onChange={onColorChange} />
-    </footer>
+        <StatusFilter value={status} onChange={onStatusChange} />
+        <ColorFilters value={colors} onChange={onColorChange} />
+      </Box>
+    </Paper>
   );
 };
 
 export default FilterTodo;
+
+const paperContainer = {
+  position: "fixed",
+  bottom: 0,
+  left: 0,
+  right: 0,
+  zIndex: 1,
+};
+
+const boxContainer = { maxWidth: "sm", mx: "auto", px: 3, };
+
+const formContainer = {
+  display: "flex",
+  flexDirection: "row",
+  justifyContent: "center",
+  my: 1,
+};

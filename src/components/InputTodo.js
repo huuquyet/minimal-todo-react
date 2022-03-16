@@ -1,20 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-
-import { allTodosCompleted, saveNewTodo } from "../features/todosSlice";
 import {
+  Box,
+  CircularProgress,
   FormControl,
   IconButton,
   Input,
   InputAdornment,
   InputLabel,
+  Paper,
   Tooltip,
 } from "@mui/material";
-import LoadingButton from "@mui/lab/LoadingButton";
-import {
-  AddCircle as AddCircleIcon,
-  DoneAll as DoneAllIcon,
-} from "@mui/icons-material";
+import { AddCircle as AddCircleIcon } from "@mui/icons-material";
+
+import { saveNewTodo } from "../features/todosSlice";
 
 const InputTodo = () => {
   const [text, setText] = useState("");
@@ -42,50 +41,44 @@ const InputTodo = () => {
     }
   };
 
-  const onMarkCompletedClicked = () => dispatch(allTodosCompleted());
-
   let isLoading = status === "loading";
   let placeholder = isLoading ? "" : "What needs to be done?";
-  // let loader = isLoading ? <Skeleton variant="text" /> : null;
 
   return (
-    <div>
-      <FormControl fullWidth variant="standard" margin="normal">
-        <InputLabel htmlFor="todo-input">Task</InputLabel>
-        <Input
-          id="todo-input"
-          type="text"
-          placeholder={placeholder}
-          disabled={isLoading}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          value={text}
-          autoFocus
-          endAdornment={
-            <InputAdornment position="end">
-              <Tooltip title="Add New Todo">
-                <LoadingButton
-                  variant="text"
-                  onClick={handleButton}
-                  loading={isLoading}
-                >
-                  <AddCircleIcon />
-                  ADD
-                </LoadingButton>
-              </Tooltip>
-            </InputAdornment>
-          }
-        />
-
-        {/*{loader}*/}
-      </FormControl>
-      <Tooltip title="Mark All Completed">
-        <IconButton onClick={onMarkCompletedClicked}>
-          <DoneAllIcon />
-        </IconButton>
-      </Tooltip>
-    </div>
+    <Box>
+      <Paper elevation={3} sx={inputContainer}>
+        <FormControl fullWidth variant="standard" margin="normal">
+          <InputLabel htmlFor="todo-input">Task</InputLabel>
+          <Input
+            id="todo-input"
+            type="text"
+            placeholder={placeholder}
+            disabled={isLoading}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+            value={text}
+            autoFocus
+            endAdornment={
+              <InputAdornment position="end">
+                <Tooltip title="Add New Todo">
+                  <IconButton onClick={handleButton}>
+                    <AddCircleIcon />
+                  </IconButton>
+                </Tooltip>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+      </Paper>
+      {isLoading ? (
+        <Box display="flex" justifyContent="center">
+          <CircularProgress />
+        </Box>
+      ) : null}
+    </Box>
   );
 };
 
 export default InputTodo;
+
+const inputContainer = { p: 1, mb: 1, mt: 9 };

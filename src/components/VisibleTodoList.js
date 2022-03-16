@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { List, ListItem, Skeleton } from "@mui/material";
+import { Box, CircularProgress, List, Paper } from "@mui/material";
 
 import SingleTodo from "./SingleTodo";
 import { selectFilteredTodoIds } from "../features/todosSlice";
@@ -11,17 +11,14 @@ const VisibleTodoList = () => {
 
   if (loadingStatus === "loading") {
     return (
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        width="100%"
-        height={99}
-      />
+      <Box display="flex" justifyContent="center">
+        <CircularProgress />
+      </Box>
     );
   }
 
   return (
-    <div>
+    <Paper elevation={3} sx={paperContainer}>
       {todoIds.length > 0 ? (
         <List>
           {todoIds.map((todoId) => (
@@ -29,12 +26,14 @@ const VisibleTodoList = () => {
           ))}
         </List>
       ) : (
-        <List>
-          <ListItem>Nothing here 🙈🐘</ListItem>
-        </List>
+        <Box textAlign="center" p={2}>
+          Nothing here 🙈🐘
+        </Box>
       )}
-    </div>
+    </Paper>
   );
 };
 
 export default VisibleTodoList;
+
+const paperContainer = { p: 1, mt: 1, mb: 20 };

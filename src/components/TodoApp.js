@@ -1,12 +1,21 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Container, CssBaseline, FormControlLabel } from "@mui/material";
+import {
+  AppBar,
+  Container,
+  CssBaseline,
+  FormControlLabel,
+  Paper,
+  Toolbar,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 
 import InputTodo from "./InputTodo.js";
 import VisibleTodoList from "./VisibleTodoList.js";
 import FilterTodo from "./FilterTodo.js";
 import MaterialUISwitch from "../customize/MaterialUISwitch";
-import { useSelector } from "react-redux";
 import { selectTodos } from "../features/todosSlice";
 import { modes } from "../constants/constants";
 
@@ -32,21 +41,31 @@ const TodoApp = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="sm">
-        <div>
-          <div style={{ textAlign: "right" }}>
-            <FormControlLabel
-              onClick={toggleMode}
-              control={<MaterialUISwitch checked={scheme === modes.DARK} />}
-              aria-label="Switch mode"
-              label=""
-            />
-          </div>
-          <h1> 📝️ To Do List {todosRemaining}</h1>
+        <Paper elevation={3} sx={{ flexGrow: 1 }}>
+          <AppBar position="fixed">
+            <Toolbar>
+              <Typography variant="h5" component="div" flexGrow={1}>
+                📝️ To Do List {todosRemaining}
+              </Typography>
+              <Tooltip
+                title={`Switch ${
+                  scheme === modes.DARK ? modes.LIGHT : modes.DARK
+                } mode`}
+              >
+                <FormControlLabel
+                  onClick={toggleMode}
+                  control={<MaterialUISwitch checked={scheme === modes.DARK} />}
+                  aria-label="Switch mode"
+                  label=""
+                />
+              </Tooltip>
+            </Toolbar>
+          </AppBar>
+        </Paper>
 
-          <InputTodo />
-          <VisibleTodoList />
-          <FilterTodo />
-        </div>
+        <InputTodo />
+        <VisibleTodoList />
+        <FilterTodo />
       </Container>
     </ThemeProvider>
   );
