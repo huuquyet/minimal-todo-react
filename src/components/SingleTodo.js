@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { Delete as DeleteIcon } from "@mui/icons-material";
 
-import { availableColors, capitalize } from "../constants/constants";
+import { availableColors, capitalize } from "../common/constants";
 import {
   todoColorSelected,
   todoDeleted,

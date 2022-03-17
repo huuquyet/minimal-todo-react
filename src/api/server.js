@@ -1,6 +1,7 @@
 import { Factory, hasMany, Model, RestSerializer, Server } from "miragejs";
 import faker from "faker";
 import seedrandom from "seedrandom";
+import { nanoid } from "nanoid";
 
 const IdSerializer = RestSerializer.extend({
   serializeIds: "always",
@@ -81,8 +82,8 @@ new Server({
   },
   factories: {
     todo: Factory.extend({
-      id(i) {
-        return Number(i);
+      id() {
+        return nanoid();
       },
       text() {
         return generateTodoText();
@@ -98,19 +99,7 @@ new Server({
   serializers: {
     todo: IdSerializer.extend({
       serialize(object, request) {
-        // HACK Mirage keeps wanting to store integer IDs as strings. Always convert them to numbers for now.
-        const numerifyId = (todo) => {
-          todo.id = Number(todo.id);
-        };
-        let json = IdSerializer.prototype.serialize.apply(this, arguments);
-
-        if (json.todo) {
-          numerifyId(json.todo);
-        } else if (json.todos) {
-          json.todos.forEach(numerifyId);
-        }
-
-        return json;
+        return IdSerializer.prototype.serialize.apply(this, arguments);
       },
     }),
     list: IdSerializer,

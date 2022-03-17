@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import {
   AppBar,
@@ -15,18 +15,19 @@ import {
 import InputTodo from "./InputTodo.js";
 import VisibleTodoList from "./VisibleTodoList.js";
 import FilterTodo from "./FilterTodo.js";
-import MaterialUISwitch from "../customize/MaterialUISwitch";
 import { selectTodos } from "../features/todosSlice";
-import { modes } from "../constants/constants";
+import { modesChanged } from "../features/modesSlice";
+import { modes } from "../common/constants";
+import MaterialUISwitch from "../common/MaterialUISwitch";
 
 const TodoApp = () => {
-  const [scheme, setScheme] = useState(modes.DARK);
-
-  const toggleMode = () => {
-    return setScheme(scheme === modes.DARK ? modes.LIGHT : modes.DARK);
-  };
+  const scheme = useSelector((state) => state.modes.scheme);
 
   const theme = createTheme({ palette: { mode: scheme } });
+
+  const dispatch = useDispatch();
+
+  const onModesChanged = () => dispatch(modesChanged());
 
   const todosRemaining = useSelector((state) => {
     const uncompletedTodos = selectTodos(state).filter(
@@ -53,7 +54,7 @@ const TodoApp = () => {
                 } mode`}
               >
                 <FormControlLabel
-                  onClick={toggleMode}
+                  onClick={onModesChanged}
                   control={<MaterialUISwitch checked={scheme === modes.DARK} />}
                   aria-label="Switch mode"
                   label=""

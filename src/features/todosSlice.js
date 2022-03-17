@@ -7,10 +7,10 @@ import {
 } from "@reduxjs/toolkit";
 
 import { client } from "../api/client";
-import { statusFilters } from "../constants/constants";
+import { statusFilters } from "../common/constants";
 
 const todosAdapter = createEntityAdapter({
-  sortComparer: (a, b) => b.id - a.id,
+  // sortComparer: (a, b) => b.id - a.id,
 });
 
 const initialState = todosAdapter.getInitialState({

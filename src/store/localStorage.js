@@ -1,27 +1,26 @@
-import MinimalTodos from '../lib/MinimalTodos';
+import React from "react";
 
-export function saveToLocalStorage(minimalTodos) {
-    try {
-        if (window.localStorage && minimalTodos) {
-            let jsonTodos = Object.assign(new MinimalTodos(), minimalTodos).serialize();
-            localStorage.setItem('minimalTodos', JSON.stringify(jsonTodos));
-        }
-    } catch (e) {
-        console.log(e);
+export function saveToLocalStorage(state) {
+  try {
+    if (window.localStorage && state) {
+      localStorage.setItem("minimalTodos", JSON.stringify(state));
     }
+  } catch (e) {
+    console.log(e);
+  }
 }
 
 export function loadFromLocalStorage() {
-    try {
-        if (window.localStorage) {
-            let jsonTodos = localStorage.getItem('minimalTodos');
-            if (jsonTodos) {
-                let minimalTodos = JSON.parse(jsonTodos);
-                if (minimalTodos === null) return undefined;
-                return MinimalTodos.deserialize(minimalTodos);
-            }
-        }
-    } catch (e) {
-        console.log(e);
+  try {
+    if (window.localStorage) {
+      let jsonTodos = localStorage.getItem("minimalTodos");
+      if (jsonTodos) {
+        let state = JSON.parse(jsonTodos);
+        if (state === null) return undefined;
+        return state;
+      }
     }
+  } catch (e) {
+    console.log(e);
+  }
 }

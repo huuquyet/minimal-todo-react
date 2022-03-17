@@ -19,7 +19,7 @@ import {
   availableColors,
   capitalize,
   statusFilters,
-} from "../constants/constants";
+} from "../common/constants";
 import {
   colorFilterChanged,
   statusFilterChanged,
@@ -137,7 +137,7 @@ const paperContainer = {
   zIndex: 1,
 };
 
-const boxContainer = { maxWidth: "sm", mx: "auto", px: 3, };
+const boxContainer = { maxWidth: "sm", mx: "auto", px: 3 };
 
 const formContainer = {
   display: "flex",

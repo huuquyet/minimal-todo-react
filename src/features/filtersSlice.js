@@ -1,7 +1,7 @@
 import React from "react";
 import { createSlice } from "@reduxjs/toolkit";
 
-import { statusFilters } from "../constants/constants";
+import { statusFilters } from "../common/constants";
 
 const initialState = {
   status: statusFilters.ALL,
