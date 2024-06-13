@@ -1,10 +1,9 @@
 import {
-  createSlice,
-  createSelector,
   createAsyncThunk,
   createEntityAdapter,
+  createSelector,
+  createSlice,
 } from "@reduxjs/toolkit";
-
 import { client } from "../api/client";
 import { statusFilters } from "../common/constants";
 
@@ -22,14 +21,11 @@ export const fetchTodos = createAsyncThunk("todos/fetchTodos", async () => {
   return response.todos;
 });
 
-export const saveNewTodo = createAsyncThunk(
-  "todos/saveNewTodo",
-  async (text) => {
-    const initialTodo = { text };
-    const response = await client.post("/fakeApi/todos", { todo: initialTodo });
-    return response.todo;
-  }
-);
+export const saveNewTodo = createAsyncThunk("todos/saveNewTodo", async (text) => {
+  const initialTodo = { text };
+  const response = await client.post("/fakeApi/todos", { todo: initialTodo });
+  return response.todo;
+});
 
 const todosSlice = createSlice({
   name: "todos",
@@ -87,15 +83,16 @@ export const {
 
 export default todosSlice.reducer;
 
-export const { selectAll: selectTodos, selectById: selectTodoById } =
-  todosAdapter.getSelectors((state) => state.todos);
+export const { selectAll: selectTodos, selectById: selectTodoById } = todosAdapter.getSelectors(
+  (state) => state.todos,
+);
 
 export const selectTodoIds = createSelector(
   // First, pass one or more "input selector" functions:
   selectTodos,
   // Then, an "output selector" that receives all the input results as arguments
   // and returns a final result value
-  (todos) => todos.map((todo) => todo.id)
+  (todos) => todos.map((todo) => todo.id),
 );
 
 export const selectFilteredTodos = createSelector(
@@ -114,17 +111,16 @@ export const selectFilteredTodos = createSelector(
     const completedStatus = status === statusFilters.COMPLETED;
     // Return either active or completed todos based on filter
     return todos.filter((todo) => {
-      const statusMatches =
-        showAllCompletions || todo.completed === completedStatus;
+      const statusMatches = showAllCompletions || todo.completed === completedStatus;
       const colorMatches = colors.length === 0 || colors.includes(todo.color);
       return statusMatches && colorMatches;
     });
-  }
+  },
 );
 
 export const selectFilteredTodoIds = createSelector(
   // Pass our other memoized selector as an input
   selectFilteredTodos,
   // And derive data in the output selector
-  (filteredTodos) => filteredTodos.map((todo) => todo.id)
+  (filteredTodos) => filteredTodos.map((todo) => todo.id),
 );

@@ -1,33 +1,14 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  Paper,
-  Tooltip,
-} from "@mui/material";
 import {
   DoneAll as DoneAllIcon,
   FilterList as FilterListIcon,
   RemoveDone as RemoveDoneIcon,
 } from "@mui/icons-material";
-
-import {
-  availableColors,
-  capitalize,
-  statusFilters,
-} from "../common/constants";
-import {
-  colorFilterChanged,
-  statusFilterChanged,
-} from "../features/filtersSlice";
-import {
-  allTodosCompleted,
-  completedTodosCleared,
-} from "../features/todosSlice";
+import { Box, Button, Checkbox, FormControlLabel, FormGroup, Paper, Tooltip } from "@mui/material";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { availableColors, capitalize, statusFilters } from "../common/constants";
+import { colorFilterChanged, statusFilterChanged } from "../features/filtersSlice";
+import { allTodosCompleted, completedTodosCleared } from "../features/todosSlice";
 
 const StatusFilter = ({ value: status, onChange }) => {
   const renderedFilters = Object.keys(statusFilters).map((key) => {
@@ -89,8 +70,7 @@ const FilterTodo = () => {
 
   const onClearCompletedClicked = () => dispatch(completedTodosCleared());
 
-  const onColorChange = (color, changeType) =>
-    dispatch(colorFilterChanged(color, changeType));
+  const onColorChange = (color, changeType) => dispatch(colorFilterChanged(color, changeType));
 
   const onStatusChange = (status) => dispatch(statusFilterChanged(status));
 

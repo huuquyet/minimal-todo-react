@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 import { modes } from "../common/constants";
 
 const initialState = {

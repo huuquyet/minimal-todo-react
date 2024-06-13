@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 import throttle from "lodash/throttle";
-
-import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
-import todosReducer, { fetchTodos } from "../features/todosSlice";
 import filtersReducer from "../features/filtersSlice";
 import modesReducer from "../features/modesSlice";
+import todosReducer, { fetchTodos } from "../features/todosSlice";
+import { loadFromLocalStorage, saveToLocalStorage } from "./localStorage";
 
 const preloadedState = loadFromLocalStorage();
 
@@ -25,7 +24,7 @@ if (!preloadedState) {
 store.subscribe(
   throttle(() => {
     saveToLocalStorage(store.getState());
-  }, 1000)
+  }, 1000),
 );
 
 export default store;

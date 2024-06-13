@@ -1,7 +1,7 @@
-import { Factory, hasMany, Model, RestSerializer, Server } from "miragejs";
 import { faker } from "@faker-js/faker";
-import seedrandom from "seedrandom";
+import { Factory, Model, RestSerializer, Server, hasMany } from "miragejs";
 import { nanoid } from "nanoid";
+import seedrandom from "seedrandom";
 
 const IdSerializer = RestSerializer.extend({
   serializeIds: "always",
@@ -99,7 +99,7 @@ new Server({
   serializers: {
     todo: IdSerializer.extend({
       serialize(_object, _request) {
-        return IdSerializer.prototype.serialize.apply(this, arguments);
+        return IdSerializer.prototype.serialize.apply(this, ...rest);
       },
     }),
     list: IdSerializer,

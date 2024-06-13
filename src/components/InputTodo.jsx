@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { AddCircle as AddCircleIcon } from "@mui/icons-material";
 import {
   Box,
   CircularProgress,
@@ -11,8 +10,8 @@ import {
   Paper,
   Tooltip,
 } from "@mui/material";
-import { AddCircle as AddCircleIcon } from "@mui/icons-material";
-
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { saveNewTodo } from "../features/todosSlice";
 
 const InputTodo = () => {

@@ -1,5 +1,4 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { Delete as DeleteIcon } from "@mui/icons-material";
 import {
   Checkbox,
   FormControl,
@@ -11,14 +10,14 @@ import {
   Select,
   Tooltip,
 } from "@mui/material";
-import { Delete as DeleteIcon } from "@mui/icons-material";
-
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { availableColors, capitalize } from "../common/constants";
 import {
+  selectTodoById,
   todoColorSelected,
   todoDeleted,
   todoToggled,
-  selectTodoById,
 } from "../features/todosSlice";
 
 const SingleTodo = ({ id }) => {
@@ -77,12 +76,7 @@ const SingleTodo = ({ id }) => {
           </Select>
         </FormControl>
         <Tooltip title="Clear">
-          <IconButton
-            edge="end"
-            aria-label="Delete"
-            color="error"
-            onClick={onDelete}
-          >
+          <IconButton edge="end" aria-label="Delete" color="error" onClick={onDelete}>
             <DeleteIcon />
           </IconButton>
         </Tooltip>

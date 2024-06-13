@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 import { statusFilters } from "../common/constants";
 
 const initialState = {
@@ -26,9 +25,7 @@ const filtersSlice = createSlice({
             break;
           }
           case "removed": {
-            state.colors = colors.filter(
-              (existingColor) => existingColor !== color
-            );
+            state.colors = colors.filter((existingColor) => existingColor !== color);
             break;
           }
           default:

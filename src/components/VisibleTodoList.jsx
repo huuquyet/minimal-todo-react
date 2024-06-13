@@ -1,9 +1,8 @@
+import { Box, CircularProgress, List, Paper } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
-import { Box, CircularProgress, List, Paper } from "@mui/material";
-
-import SingleTodo from "./SingleTodo";
 import { selectFilteredTodoIds } from "../features/todosSlice";
+import SingleTodo from "./SingleTodo";
 
 const VisibleTodoList = () => {
   const todoIds = useSelector(selectFilteredTodoIds);
