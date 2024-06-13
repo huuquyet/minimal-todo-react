@@ -1,4 +1,3 @@
-import React from "react";
 import { createSlice } from "@reduxjs/toolkit";
 
 import { statusFilters } from "../common/constants";
@@ -17,7 +16,7 @@ const filtersSlice = createSlice({
     },
     colorFilterChanged: {
       reducer(state, action) {
-        let { color, changeType } = action.payload;
+        const { color, changeType } = action.payload;
         const { colors } = state;
         switch (changeType) {
           case "added": {

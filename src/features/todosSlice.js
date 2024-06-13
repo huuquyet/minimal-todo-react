@@ -1,4 +1,3 @@
-import React from "react";
 import {
   createSlice,
   createSelector,
@@ -54,9 +53,9 @@ const todosSlice = createSlice({
     },
     todoDeleted: todosAdapter.removeOne,
     allTodosCompleted(state) {
-      Object.values(state.entities).forEach((todo) => {
+      for (const todo of Object.values(state.entities)) {
         todo.completed = true;
-      });
+      }
     },
     completedTodosCleared(state) {
       const completedIds = Object.values(state.entities)

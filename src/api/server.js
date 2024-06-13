@@ -1,5 +1,5 @@
 import { Factory, hasMany, Model, RestSerializer, Server } from "miragejs";
-import faker from "faker";
+import { faker } from "@faker-js/faker";
 import seedrandom from "seedrandom";
 import { nanoid } from "nanoid";
 
@@ -11,7 +11,7 @@ const IdSerializer = RestSerializer.extend({
 // a consistent set of users / entries each time the page loads.
 // This can be reset by deleting this localStorage value,
 // or turned off by setting `useSeededRNG` to false.
-let useSeededRNG = false;
+const useSeededRNG = false;
 
 let rng = seedrandom();
 
@@ -31,9 +31,9 @@ if (useSeededRNG) {
   faker.seed(seedDate.getTime());
 }
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
+function getRandomInt(minInp, maxInp) {
+  const min = Math.ceil(minInp);
+  const max = Math.floor(maxInp);
   return Math.floor(rng() * (max - min + 1)) + min;
 }
 
@@ -98,7 +98,7 @@ new Server({
   },
   serializers: {
     todo: IdSerializer.extend({
-      serialize(object, request) {
+      serialize(_object, _request) {
         return IdSerializer.prototype.serialize.apply(this, arguments);
       },
     }),

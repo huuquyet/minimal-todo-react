@@ -41,8 +41,8 @@ const InputTodo = () => {
     }
   };
 
-  let isLoading = status === "loading";
-  let placeholder = isLoading ? "" : "What needs to be done?";
+  const isLoading = status === "loading";
+  const placeholder = isLoading ? "" : "What needs to be done?";
 
   return (
     <Box>

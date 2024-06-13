@@ -12,9 +12,9 @@ import {
   Typography,
 } from "@mui/material";
 
-import InputTodo from "./InputTodo.js";
-import VisibleTodoList from "./VisibleTodoList.js";
-import FilterTodo from "./FilterTodo.js";
+import InputTodo from "./InputTodo";
+import VisibleTodoList from "./VisibleTodoList";
+import FilterTodo from "./FilterTodo";
 import { selectTodos } from "../features/todosSlice";
 import { modesChanged } from "../features/modesSlice";
 import { modes } from "../common/constants";
